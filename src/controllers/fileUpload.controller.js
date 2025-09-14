@@ -1,6 +1,8 @@
 import fs from 'fs'
 import {apiSuccessResponse } from '../utility/index.js'
 import { randomUUID } from 'crypto'
+import {GlobalError} from '../utility/index.js'
+import { error } from 'console'
 
 
 
@@ -32,9 +34,7 @@ function fileUploadController(req, res) {
         }
     }
     else {
-        console.log("file not recived")
-        res.send("file not recived")
-        res.end()  
+        throw new GlobalError(400,"client error",error)
     }
 }
 
